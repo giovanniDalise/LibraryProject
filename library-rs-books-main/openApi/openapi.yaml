@@ -1,0 +1,166 @@
+openapi: 3.0.1
+info:
+  title: API per gestione dei libri di libreria
+  description: |-
+    Questa API consente la gestione dei libri all'interno di una libreria. 
+    Include operazioni CRUD principali per la gestione dei libri.
+  version: 1.0.0
+paths:
+
+  /library-rs-books/library:
+    parameters:
+    responses:
+      "200":
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: "object"
+              nullable: true
+        description: "default response"
+      default:
+        content:
+          application/json:
+            schema:
+              properties: {}
+              type: "object"
+              nullable: true
+        description: "default response"
+    operationId: "getBooks"
+    post:
+      operationId: addBook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /library-rs-books/library/{id}:
+    get:
+      operationId: getBookById
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+    put:
+      operationId: updateBook
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+    delete:
+      operationId: deleteBook
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /library-rs-books/library/findByBook:
+    post:
+      operationId: findBooksByBook
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+  /library-rs-books/library/findByString:
+    get:
+      operationId: findBooksByString
+      parameters:
+        - name: param
+          in: query
+          schema:
+            type: string
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
+components:
+  schemas:
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        surname:
+          type: string
+        books:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        title:
+          type: string
+        editor:
+          $ref: '#/components/schemas/Editor'
+        authors:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Author'
+        authorsArray:
+          type: array
+          items:
+            $ref: '#/components/schemas/Author'
+        isbn:
+          type: string
+    Editor:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        books:
+          uniqueItems: true
+          type: array
+          items:
+            $ref: '#/components/schemas/Book'

@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<con:soapui-project id="275f522f-deb3-4614-a02b-388c7de5539a" activeEnvironment="Default" name="testLibrarySOAP" resourceRoot="" soapui-version="5.7.2" xmlns:con="http://eviware.com/soapui/config"><con:settings/><con:interface xsi:type="con:WsdlInterface" id="df29e5f7-642a-415d-b6d7-44c9d999dcca" wsaVersion="NONE" name="BooksWSServiceSoapBinding" type="wsdl" bindingName="{http://alfasoft.it/}BooksWSServiceSoapBinding" soapVersion="1_1" anonymous="optional" definition="http://localhost:8080/library-ws-books-main/BooksWSService?wsdl" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><con:settings/><con:definitionCache type="TEXT" rootPart="http://localhost:8080/library-ws-books-main/BooksWSService?wsdl"><con:part><con:url>http://localhost:8080/library-ws-books-main/BooksWSService?wsdl</con:url><con:content><![CDATA[<wsdl:definitions name="BooksWSService" targetNamespace="http://alfasoft.it/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:tns="http://alfasoft.it/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:ns1="http://schemas.xmlsoap.org/soap/http">
+  <wsdl:types>
+    <xs:schema attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://alfasoft.it/" version="1.0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="deleteBook" type="tns:deleteBook"/>
+      <xs:element name="deleteBookResponse" type="tns:deleteBookResponse"/>
+      <xs:element name="findBooksByBook" type="tns:findBooksByBook"/>
+      <xs:element name="findBooksByBookResponse" type="tns:findBooksByBookResponse"/>
+      <xs:element name="findBooksByString" type="tns:findBooksByString"/>
+      <xs:element name="findBooksByStringResponse" type="tns:findBooksByStringResponse"/>
+      <xs:element name="getBookById" type="tns:getBookById"/>
+      <xs:element name="getBookByIdResponse" type="tns:getBookByIdResponse"/>
+      <xs:element name="getBooks" type="tns:getBooks"/>
+      <xs:element name="getBooksResponse" type="tns:getBooksResponse"/>
+      <xs:element name="insertBook" type="tns:insertBook"/>
+      <xs:element name="insertBookResponse" type="tns:insertBookResponse"/>
+      <xs:element name="updateBook" type="tns:updateBook"/>
+      <xs:element name="updateBookResponse" type="tns:updateBookResponse"/>
+      <xs:complexType name="getBookById">
+        <xs:sequence>
+          <xs:element name="id" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getBookByIdResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="book" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="book">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="authors" nillable="true" type="tns:author"/>
+          <xs:element minOccurs="0" name="editor" type="tns:editor"/>
+          <xs:element minOccurs="0" name="ISBN" type="xs:string"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="title" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="author">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="books" nillable="true" type="tns:book"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+          <xs:element minOccurs="0" name="surname" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="editor">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="books" nillable="true" type="tns:book"/>
+          <xs:element minOccurs="0" name="id" type="xs:long"/>
+          <xs:element minOccurs="0" name="name" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="insertBook">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="book" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="insertBookResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="result" type="tns:result"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="result">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateBook">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="data" type="tns:updater"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updater">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="book" type="tns:book"/>
+          <xs:element name="id" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="updateBookResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="result" type="tns:result"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findBooksByString">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="param" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findBooksByStringResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="book" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="getBooks">
+        <xs:sequence/>
+      </xs:complexType>
+      <xs:complexType name="getBooksResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="libro" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findBooksByBook">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="book" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="findBooksByBookResponse">
+        <xs:sequence>
+          <xs:element maxOccurs="unbounded" minOccurs="0" name="book" type="tns:book"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteBook">
+        <xs:sequence>
+          <xs:element name="id" type="xs:long"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:complexType name="deleteBookResponse">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="result" type="tns:result"/>
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="WSBooksException" type="tns:WSBooksException"/>
+      <xs:complexType name="WSBooksException">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="message" type="xs:string"/>
+        </xs:sequence>
+      </xs:complexType>
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="getBooksResponse">
+    <wsdl:part element="tns:getBooksResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertBook">
+    <wsdl:part element="tns:insertBook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateBook">
+    <wsdl:part element="tns:updateBook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBooksByStringResponse">
+    <wsdl:part element="tns:findBooksByStringResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="insertBookResponse">
+    <wsdl:part element="tns:insertBookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBooks">
+    <wsdl:part element="tns:getBooks" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookById">
+    <wsdl:part element="tns:getBookById" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBooksByString">
+    <wsdl:part element="tns:findBooksByString" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="updateBookResponse">
+    <wsdl:part element="tns:updateBookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBooksByBook">
+    <wsdl:part element="tns:findBooksByBook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="findBooksByBookResponse">
+    <wsdl:part element="tns:findBooksByBookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteBookResponse">
+    <wsdl:part element="tns:deleteBookResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="getBookByIdResponse">
+    <wsdl:part element="tns:getBookByIdResponse" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="WSBooksException">
+    <wsdl:part element="tns:WSBooksException" name="WSBooksException"></wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="deleteBook">
+    <wsdl:part element="tns:deleteBook" name="parameters"></wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="IBooksWS">
+    <wsdl:operation name="getBookById">
+      <wsdl:input message="tns:getBookById" name="getBookById"></wsdl:input>
+      <wsdl:output message="tns:getBookByIdResponse" name="getBookByIdResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSBooksException" name="WSBooksException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertBook">
+      <wsdl:input message="tns:insertBook" name="insertBook"></wsdl:input>
+      <wsdl:output message="tns:insertBookResponse" name="insertBookResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSBooksException" name="WSBooksException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateBook">
+      <wsdl:input message="tns:updateBook" name="updateBook"></wsdl:input>
+      <wsdl:output message="tns:updateBookResponse" name="updateBookResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSBooksException" name="WSBooksException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findBooksByString">
+      <wsdl:input message="tns:findBooksByString" name="findBooksByString"></wsdl:input>
+      <wsdl:output message="tns:findBooksByStringResponse" name="findBooksByStringResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSBooksException" name="WSBooksException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBooks">
+      <wsdl:input message="tns:getBooks" name="getBooks"></wsdl:input>
+      <wsdl:output message="tns:getBooksResponse" name="getBooksResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSBooksException" name="WSBooksException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findBooksByBook">
+      <wsdl:input message="tns:findBooksByBook" name="findBooksByBook"></wsdl:input>
+      <wsdl:output message="tns:findBooksByBookResponse" name="findBooksByBookResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSBooksException" name="WSBooksException"></wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBook">
+      <wsdl:input message="tns:deleteBook" name="deleteBook"></wsdl:input>
+      <wsdl:output message="tns:deleteBookResponse" name="deleteBookResponse"></wsdl:output>
+      <wsdl:fault message="tns:WSBooksException" name="WSBooksException"></wsdl:fault>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BooksWSServiceSoapBinding" type="tns:IBooksWS">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="getBookById">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBookById">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBookByIdResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSBooksException">
+        <soap:fault name="WSBooksException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="insertBook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="insertBook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="insertBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSBooksException">
+        <soap:fault name="WSBooksException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="updateBook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="updateBook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="updateBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSBooksException">
+        <soap:fault name="WSBooksException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findBooksByString">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findBooksByString">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findBooksByStringResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSBooksException">
+        <soap:fault name="WSBooksException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getBooks">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="getBooks">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="getBooksResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSBooksException">
+        <soap:fault name="WSBooksException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findBooksByBook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="findBooksByBook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="findBooksByBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSBooksException">
+        <soap:fault name="WSBooksException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="deleteBook">
+      <soap:operation soapAction="" style="document"/>
+      <wsdl:input name="deleteBook">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="deleteBookResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="WSBooksException">
+        <soap:fault name="WSBooksException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BooksWSService">
+    <wsdl:port binding="tns:BooksWSServiceSoapBinding" name="BooksWSPort">
+      <soap:address location="http://localhost:8080/library-ws-books-main/BooksWSService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>]]></con:content><con:type>http://schemas.xmlsoap.org/wsdl/</con:type></con:part></con:definitionCache><con:endpoints><con:endpoint>http://localhost:8080/library-ws-books-main/BooksWSService</con:endpoint></con:endpoints><con:operation id="cc34f1a7-9989-4b78-a91f-e45b51c6bb6f" isOneWay="false" action="" name="deleteBook" bindingOperationName="deleteBook" type="Request-Response" outputName="deleteBookResponse" inputName="deleteBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="1a709431-ebd3-49d5-9a15-86a96def03f5" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/library-ws-books-main/BooksWSService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alf="http://alfasoft.it/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alf:deleteBook>\r
+         <id>4</id>\r
+      </alf:deleteBook>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://alfasoft.it/IBooksWS/deleteBook"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="6db4d148-fd9f-4c76-8956-c59ed9cc70e6" isOneWay="false" action="" name="findBooksByBook" bindingOperationName="findBooksByBook" type="Request-Response" outputName="findBooksByBookResponse" inputName="findBooksByBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="6ffc6bbe-c6ca-42f8-92d8-ff48cda12a14" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/library-ws-books-main/BooksWSService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alf="http://alfasoft.it/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alf:findBooksByBook>\r
+         <!--Optional:-->\r
+         <book>\r
+            <title>barone</title>\r
+         </book>\r
+      </alf:findBooksByBook>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://alfasoft.it/IBooksWS/findBooksByBook"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="310288c6-7173-4bea-b350-2ddfdef015eb" isOneWay="false" action="" name="findBooksByString" bindingOperationName="findBooksByString" type="Request-Response" outputName="findBooksByStringResponse" inputName="findBooksByString" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="a0514ce9-f5f0-4465-8f5a-610f49cabdd3" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/library-ws-books-main/BooksWSService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alf="http://alfasoft.it/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alf:findBooksByString>\r
+         <!--Optional:-->\r
+         <param>rosa</param>\r
+      </alf:findBooksByString>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://alfasoft.it/IBooksWS/findBooksByString"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="150f9049-f373-4733-8493-30bcc49f4c8b" isOneWay="false" action="" name="getBookById" bindingOperationName="getBookById" type="Request-Response" outputName="getBookByIdResponse" inputName="getBookById" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="405c30d6-8165-4d83-96a7-06077e31592b" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/library-ws-books-main/BooksWSService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alf="http://alfasoft.it/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alf:getBookById>\r
+         <id>2</id>\r
+      </alf:getBookById>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://alfasoft.it/IBooksWS/getBookById"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="5402fdd7-9312-4b52-a15e-bec24d3eafa8" isOneWay="false" action="" name="getBooks" bindingOperationName="getBooks" type="Request-Response" outputName="getBooksResponse" inputName="getBooks" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="f20371d1-c1a6-4111-a5ab-b4796aebedfb" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/library-ws-books-main/BooksWSService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alf="http://alfasoft.it/">\r
+   <soapenv:Header/>\r
+   <soapenv:Body>\r
+      <alf:getBooks/>\r
+   </soapenv:Body>\r
+</soapenv:Envelope>]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://alfasoft.it/IBooksWS/getBooks"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="1d21ca3c-1e04-408f-9097-709e91d3647c" isOneWay="false" action="" name="insertBook" bindingOperationName="insertBook" type="Request-Response" outputName="insertBookResponse" inputName="insertBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="2fa72e0e-0101-4697-b076-4120846769cc" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/library-ws-books-main/BooksWSService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alf="http://alfasoft.it/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <alf:insertBook>
+         <book>
+            <authors>
+               <books/>
+               <name>nomeAutore</name>
+               <surname>cognomeAutore</surname>
+            </authors>
+            <editor>
+               <books/>
+               <name>nomeEditore</name>
+            </editor>
+            <ISBN>123</ISBN>
+            <title>title</title>
+         </book>
+      </alf:insertBook>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://alfasoft.it/IBooksWS/insertBook"/><con:wsrmConfig version="1.2"/></con:call></con:operation><con:operation id="91065ddf-56ce-4ca4-8814-6f2b1b4bb28d" isOneWay="false" action="" name="updateBook" bindingOperationName="updateBook" type="Request-Response" outputName="updateBookResponse" inputName="updateBook" receivesAttachments="false" sendsAttachments="false" anonymous="optional"><con:settings/><con:call id="cc1f4f55-4973-40ac-9fd9-c0c8ba2a323e" name="Request 1"><con:settings><con:setting id="com.eviware.soapui.impl.wsdl.WsdlRequest@request-headers">&lt;xml-fragment/></con:setting></con:settings><con:encoding>UTF-8</con:encoding><con:endpoint>http://localhost:8080/library-ws-books-main/BooksWSService</con:endpoint><con:request><![CDATA[<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:alf="http://alfasoft.it/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <alf:updateBook>
+         <data>
+            <book>
+               <authors>
+                  <books/>
+                  <name>test</name>
+                  <surname>test</surname>
+               </authors>
+               <editor>
+                  <books/>
+                  <name>testEditor</name>
+               </editor>
+               <ISBN>1234</ISBN>
+               <id>5</id> <!-- ID del libro -->
+               <title>title</title>
+            </book>
+            <id>5</id> <!-- ID della richiesta, associato al libro -->
+         </data>
+      </alf:updateBook>
+   </soapenv:Body>
+</soapenv:Envelope>
+]]></con:request><con:credentials><con:authType>No Authorization</con:authType></con:credentials><con:jmsConfig JMSDeliveryMode="PERSISTENT"/><con:jmsPropertyConfig/><con:wsaConfig mustUnderstand="NONE" version="200508" action="http://alfasoft.it/IBooksWS/updateBook"/><con:wsrmConfig version="1.2"/></con:call></con:operation></con:interface><con:properties/><con:wssContainer/><con:oAuth2ProfileContainer/><con:oAuth1ProfileContainer/></con:soapui-project>

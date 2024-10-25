@@ -1,0 +1,7 @@
+org\giovanniDalise\BootStrap.class
+org\giovanniDalise\dto\Author.class
+org\giovanniDalise\dao\DaoBooks.class
+org\giovanniDalise\dto\Editor.class
+org\giovanniDalise\dao\IDao.class
+org\giovanniDalise\exception\DaoException.class
+org\giovanniDalise\dto\Book.class
