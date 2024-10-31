@@ -3,11 +3,12 @@ package it.alfasoft;
 
 import org.giovanniDalise.dao.DaoBooks;
 import org.giovanniDalise.dao.IDao;
-import org.giovanniDalise.dto.Book;
+import org.giovanniDalise.entities.Book;
 import org.giovanniDalise.exception.DaoException;
 
 import javax.inject.Inject;
 import javax.jws.WebService;
+import javax.transaction.Transactional;
 import java.util.List;
 
 @WebService(endpointInterface ="it.alfasoft.IBooksWS")

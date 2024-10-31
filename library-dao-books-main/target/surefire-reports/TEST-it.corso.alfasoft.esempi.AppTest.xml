@@ -18,7 +18,7 @@
     <property name="user.country" value="IT"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_291\jre\bin"/>
-    <property name="sun.java.command" value="C:\Users\GDalise\AppData\Local\Temp\surefire1700683311760086146\surefirebooter-20241025121139983_3.jar C:\Users\GDalise\AppData\Local\Temp\surefire1700683311760086146 2024-10-25T12-11-39_670-jvmRun1 surefire-20241025121139983_1tmp surefire_0-20241025121139983_2tmp"/>
+    <property name="sun.java.command" value="C:\Users\GDalise\AppData\Local\Temp\surefire8353669754900173330\surefirebooter-20241026202927521_3.jar C:\Users\GDalise\AppData\Local\Temp\surefire8353669754900173330 2024-10-26T20-29-27_213-jvmRun1 surefire-20241026202927521_1tmp surefire_0-20241026202927521_2tmp"/>
     <property name="surefire.test.class.path" value="C:\Users\GDalise\source\repos\giovanniDalise\WorkspaceJava\LibraryProject\library-dao-books-main\target\test-classes;C:\Users\GDalise\source\repos\giovanniDalise\WorkspaceJava\LibraryProject\library-dao-books-main\target\classes;C:\Users\GDalise\.m2\repository\com\mysql\mysql-connector-j\8.0.33\mysql-connector-j-8.0.33.jar;C:\Users\GDalise\.m2\repository\com\google\protobuf\protobuf-java\3.21.9\protobuf-java-3.21.9.jar;C:\Users\GDalise\.m2\repository\junit\junit\3.8.1\junit-3.8.1.jar;C:\Users\GDalise\.m2\repository\javax\enterprise\cdi-api\2.0.SP1\cdi-api-2.0.SP1.jar;C:\Users\GDalise\.m2\repository\javax\el\javax.el-api\3.0.0\javax.el-api-3.0.0.jar;C:\Users\GDalise\.m2\repository\javax\interceptor\javax.interceptor-api\1.2\javax.interceptor-api-1.2.jar;C:\Users\GDalise\.m2\repository\javax\inject\javax.inject\1\javax.inject-1.jar;"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="C:\Users\GDalise"/>
@@ -31,7 +31,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="C:\Users\GDalise\AppData\Local\Temp\surefire1700683311760086146\surefirebooter-20241025121139983_3.jar"/>
+    <property name="surefire.real.class.path" value="C:\Users\GDalise\AppData\Local\Temp\surefire8353669754900173330\surefirebooter-20241026202927521_3.jar"/>
     <property name="sun.boot.class.path" value="C:\Program Files\Java\jdk1.8.0_291\jre\lib\resources.jar;C:\Program Files\Java\jdk1.8.0_291\jre\lib\rt.jar;C:\Program Files\Java\jdk1.8.0_291\jre\lib\sunrsasign.jar;C:\Program Files\Java\jdk1.8.0_291\jre\lib\jsse.jar;C:\Program Files\Java\jdk1.8.0_291\jre\lib\jce.jar;C:\Program Files\Java\jdk1.8.0_291\jre\lib\charsets.jar;C:\Program Files\Java\jdk1.8.0_291\jre\lib\jfr.jar;C:\Program Files\Java\jdk1.8.0_291\jre\classes"/>
     <property name="user.script" value=""/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>

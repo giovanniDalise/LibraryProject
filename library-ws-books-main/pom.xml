@@ -20,7 +20,7 @@
   <dependencies>
     <dependency>
     <groupId>org.giovanniDalise</groupId>
-    <artifactId>library-dao-books</artifactId>
+    <artifactId>library-daoJPA-books</artifactId>
     <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
@@ -41,6 +41,14 @@
       <scope>provided</scope>
     </dependency>
 
+    <dependency>
+      <groupId>javax.transaction</groupId>
+      <artifactId>javax.transaction-api</artifactId>
+      <version>1.3</version> <!-- Usa la versione più adatta per la tua configurazione -->
+      <scope>provided</scope>
+    </dependency>
+
+
   </dependencies>
   <build>
     <finalName>library-ws-books</finalName>
@@ -55,9 +63,7 @@
         <artifactId>tomee-maven-plugin</artifactId>
         <version>${tomee-plugin.version}</version>
         <configuration>
-          <libs>
-            <lib>com.mysql:mysql-connector-j:8.0.33</lib>
-          </libs>
+
           <tomeeVersion>${tomee.version}</tomeeVersion>
           <tomeeClassifier>plume</tomeeClassifier>
           <removeDefaultWebapps>false</removeDefaultWebapps>

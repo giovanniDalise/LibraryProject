@@ -20,7 +20,7 @@
     </dependency>
     <dependency>
       <groupId>org.giovanniDalise</groupId>
-      <artifactId>library-dao-books</artifactId>
+      <artifactId>library-daoJPA-books</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <dependency>
@@ -60,6 +60,7 @@
   <properties>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
   <build>
     <finalName>library-ws-books</finalName>

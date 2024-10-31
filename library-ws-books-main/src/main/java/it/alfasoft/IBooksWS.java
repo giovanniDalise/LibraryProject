@@ -1,6 +1,6 @@
 package it.alfasoft;
 
-import org.giovanniDalise.dto.Book;
+import org.giovanniDalise.entities.Book;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;

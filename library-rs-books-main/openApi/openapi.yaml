@@ -6,27 +6,14 @@ info:
     Include operazioni CRUD principali per la gestione dei libri.
   version: 1.0.0
 paths:
-
-  /library-rs-books/library:
-    parameters:
-    responses:
-      "200":
-        content:
-          application/json:
-            schema:
-              properties: {}
-              type: "object"
-              nullable: true
-        description: "default response"
-      default:
-        content:
-          application/json:
-            schema:
-              properties: {}
-              type: "object"
-              nullable: true
-        description: "default response"
-    operationId: "getBooks"
+  /library-rs-book:
+    get:
+      operationId: getBooks
+      responses:
+        default:
+          description: default response
+          content:
+            application/json: {}
     post:
       operationId: addBook
       requestBody:
@@ -39,7 +26,7 @@ paths:
           description: default response
           content:
             application/json: {}
-  /library-rs-books/library/{id}:
+  /library-rs-book/{id}:
     get:
       operationId: getBookById
       parameters:
@@ -87,7 +74,7 @@ paths:
           description: default response
           content:
             application/json: {}
-  /library-rs-books/library/findByBook:
+  /library-rs-book/findByBook:
     post:
       operationId: findBooksByBook
       requestBody:
@@ -100,7 +87,7 @@ paths:
           description: default response
           content:
             application/json: {}
-  /library-rs-books/library/findByString:
+  /library-rs-book/findByString:
     get:
       operationId: findBooksByString
       parameters:
@@ -118,26 +105,19 @@ components:
     Author:
       type: object
       properties:
-        id:
-          type: integer
-          format: int64
         name:
           type: string
         surname:
           type: string
-        books:
-          uniqueItems: true
-          type: array
-          items:
-            $ref: '#/components/schemas/Book'
+        id:
+          type: integer
+          format: int64
     Book:
       type: object
       properties:
         id:
           type: integer
           format: int64
-        title:
-          type: string
         editor:
           $ref: '#/components/schemas/Editor'
         authors:
@@ -145,22 +125,24 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Author'
+        title:
+          type: string
+        isbn:
+          type: string
         authorsArray:
           type: array
           items:
             $ref: '#/components/schemas/Author'
-        isbn:
-          type: string
-    Editor:
-      type: object
-      properties:
-        id:
-          type: integer
-          format: int64
-        name:
-          type: string
-        books:
+        authorsSet:
           uniqueItems: true
           type: array
           items:
-            $ref: '#/components/schemas/Book'
+            $ref: '#/components/schemas/Author'
+    Editor:
+      type: object
+      properties:
+        name:
+          type: string
+        id:
+          type: integer
+          format: int64

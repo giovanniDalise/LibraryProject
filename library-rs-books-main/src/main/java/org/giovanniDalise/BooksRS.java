@@ -1,7 +1,7 @@
 package org.giovanniDalise;
 
 import org.giovanniDalise.dao.IDao;
-import org.giovanniDalise.dto.Book;
+import org.giovanniDalise.entities.Book;
 
 import javax.inject.Inject;
 import javax.ws.rs.*;
