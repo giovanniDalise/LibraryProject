@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="overlay"></div> <!-- Aggiunto overlay -->
+    <h1>Giovanni Library</h1>
+    <ul>
+        <li><a routerLink="/books-view">View All Book</a></li>
+        <li>
+            <input type="number" [(ngModel)]="bookId" placeholder="Enter Book ID" />
+            <button (click)="searchBookById()">Search Book by ID</button>
+        </li>
+        <li>
+            <input type="string" [(ngModel)]="text" placeholder="Enter Text" />
+            <button (click)="searchBookByText()">Search Book by Text</button>
+        </li>          
+        <!-- Collegamenti per navigare al form in base alle modalità -->
+        <li><a [routerLink]="['/book-form', 'search']">Advanced Book Search</a></li>
+        <li><a [routerLink]="['/book-form', 'create']">Add New Book</a></li>
+        <li><a [routerLink]="['/book-form', 'update']">Edit Book</a></li>
+        <li>Delete Book</li>
+    </ul>
+</div>

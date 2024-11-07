@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="overlay"></div> <!-- Aggiunto overlay -->
+    <h2><a routerLink="/home">Home Page</a></h2>
+    <h1>Books</h1>
+
+    <div *ngIf="books && books.length > 0; else noBooks">
+        <div *ngFor="let book of books">
+            <h1>Title: {{ book.title }}</h1>
+            <h3>ISBN: {{ book.isbn }}</h3>           
+            <div *ngFor="let author of book.authors">
+                <h2>Author: {{ author.name + " " + author.surname }}</h2>
+            </div>
+            <h2>Editor: {{ book.editor.name }}</h2> <!-- Rimuovi il ?. -->
+        </div>
+    </div>
+
+    <ng-template #noBooks>
+        <p>Nessun libro trovato.</p> <!-- Messaggio se non ci sono libri -->
+    </ng-template>
+</div>

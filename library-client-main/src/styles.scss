@@ -1,0 +1,59 @@
+@import "../node_modules/bootstrap/scss/bootstrap";
+@import "../node_modules/bootstrap-icons";
+
+/* Stile per il contenitore */
+.container {
+    position: relative; /* Necessario per posizionare correttamente l'overlay */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: url("/img/libraryBackground.jpg") no-repeat center center; /* Immagine di sfondo */
+    background-size: contain; /* Fa sì che l'immagine si adatti all'area di sfondo senza tagliarla */
+    min-height: 100vh; /* Riempie tutta l'altezza della finestra */
+    text-align: center;
+}
+
+/* Stile per l'overlay */
+.overlay {
+    position: absolute; /* Posiziona l'overlay sopra l'immagine */
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.5); /* Colore bianco con trasparenza */
+    z-index: 1; /* Assicura che l'overlay sia sopra l'immagine di sfondo */
+}
+
+/* Stile per i titoli */
+h1, h2 {
+    font-family: 'Georgia', serif; /* Font elegante */
+    letter-spacing: 2px; /* Spazio tra le lettere */
+    position: relative; /* Necessario per posizionare sopra l'overlay */
+    z-index: 2; /* Assicura che i titoli siano sopra l'overlay */
+}
+
+h3 {
+    font-family: 'Georgia', serif; /* Font elegante */
+    letter-spacing: 2px; /* Spazio tra le lettere */
+    position: relative; /* Necessario per posizionare sopra l'overlay */
+    z-index: 2; /* Assicura che i titoli siano sopra l'overlay */
+}
+
+/* Stile per l'elenco */
+ul {
+    list-style-type: none; /* Rimuove i punti dall'elenco */
+    padding: 0; /* Rimuove il padding */
+}
+
+/* Stile per gli elementi dell'elenco */
+li {
+    font-family: 'Arial', sans-serif; /* Font per gli elementi dell'elenco */
+    transition: color 0.3s; /* Transizione per il cambio colore */
+    position: relative; /* Necessario per posizionare sopra l'overlay */
+    z-index: 2; /* Assicura che gli elementi dell'elenco siano sopra l'overlay */
+}
+
+/* Cambia colore al passaggio del mouse */
+li:hover {
+    color: #007BFF; /* Colore al passaggio del mouse */
+}

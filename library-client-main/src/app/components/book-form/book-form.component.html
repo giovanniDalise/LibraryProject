@@ -1,0 +1,38 @@
+<form [formGroup]="bookForm" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="title">Title</label>
+      <input id="title" formControlName="title">
+    </div>
+    
+    <div>
+      <label for="isbn">ISBN</label>
+      <input id="isbn" formControlName="isbn">
+    </div>
+    
+    <div formArrayName="authors">
+      <div *ngFor="let author of authors.controls; let i = index">
+        <div [formGroupName]="i">
+          <label for="name">Author Name</label>
+          <input id="name" formControlName="name">
+          
+          <label for="surname">Author Surname</label>
+          <input id="surname" formControlName="surname">
+          
+          <button type="button" (click)="removeAuthor(i)">Remove Author</button>
+        </div>
+      </div>
+      <button type="button" (click)="addAuthor()">Add Author</button>
+    </div>
+    
+    <div formGroupName="editor">
+      <label for="editorName">Editor Name</label>
+      <input id="editorName" formControlName="name">
+      
+      <label for="editorAddress">Editor Address</label>
+      <input id="editorAddress" formControlName="address">
+    </div>
+    
+    <button type="submit" [disabled]="!bookForm.valid">Submit</button>
+  </form>
+  
+  
