@@ -91,7 +91,7 @@ public class BooksRS {
         }
     }
 
-    @GET
+    @POST
     @Path("/findByBook")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
