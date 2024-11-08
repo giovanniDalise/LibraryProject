@@ -37,7 +37,8 @@ export class BookFormComponent {
     });
   }
 
-  // Getter per gli autori
+  // Getter per gli autori. La sintassi del getter è get<nomeProprietà>() e stai richiamando il get per accedere agli authors del formGroup
+  // quando utilizzi this.authors sia in addAuthor che in removeAuthor()
   get authors(): FormArray {
     return this.bookForm.get('authors') as FormArray;
   }
@@ -52,7 +53,7 @@ export class BookFormComponent {
 
   // Metodo per aggiungere un autore all'array
   addAuthor() {
-    this.authors.push(this.createAuthor());
+    this.authors.push(this.createAuthor()); //Qui stai usando il getter authors per accedere al FormArray degli autori. Quando chiami this.authors, Angular invoca automaticamente il getter e ti restituisce il FormArray. Quindi, puoi aggiungere un nuovo autore con push.
   }
 
   // Metodo per rimuovere un autore dall'array
@@ -72,7 +73,7 @@ export class BookFormComponent {
     });
   }
 
-  onSubmit(): void {
+  onSubmit(): void {   //quando premi il submit del form va a chiamare le differenti funzioni
     if (this.bookForm.valid) {
       const book: Book = this.bookForm.value;
 
@@ -103,7 +104,12 @@ export class BookFormComponent {
       'Content-Type': 'application/json',
       'Accept': 'application/json' 
     });
-  
+    //In TypeScript, Partial<T> è un tipo generico che rende tutte le proprietà di un tipo opzionali.
+    //In questo caso, Partial<Book> significa che tutte le proprietà dell'oggetto Book diventano opzionali. 
+    //Quindi, quando usi searchCriteria as Partial<Book>, stai dicendo al compilatore TypeScript che searchCriteria 
+    //può essere trattato come un oggetto che ha alcune (o nessuna) delle proprietà di Book, senza la necessità di includere 
+    //tutte le proprietà. Quindi adatto per una ricerca con più campi opzionali come
+    //quella del findByObject. searchCriteria è un oggetto creato al momento che poi facciamo diventare un Partial<T>
     const searchCriteria = {
       title: criteria.title,
       isbn: criteria.isbn,

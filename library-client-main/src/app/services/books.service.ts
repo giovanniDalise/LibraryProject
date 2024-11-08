@@ -15,7 +15,7 @@ export class BooksService {
     return this.http.get<Book[]>(this.apiUrl).pipe(
       map((books: any[]) => 
         books.map(book => ({
-          bookId: book.id, // Assumi che 'id' corrisponda a 'bookId' nel tuo modello
+          bookId: book.bookId, // Assumi che 'id' corrisponda a 'bookId' nel tuo modello
           title: book.title,
           isbn: book.isbn,
           authors: book.authors, // Mantieni solo il campo authors
@@ -26,7 +26,7 @@ export class BooksService {
   }
 
   getBookById(bookId: number): Observable<Book> {
-    return this.http.get<Book>(`${this.apiUrl}/${bookId}`).pipe(  // Passa il bookId nell'URL
+    return this.http.get<Book>(this.apiUrl + '/' + bookId).pipe(  // Passa il bookId nell'URL
       map(book => ({
         bookId: book.bookId, // Assumi che 'id' sia il campo nel JSON restituito
         title: book.title,
@@ -38,10 +38,10 @@ export class BooksService {
   }
 
   getBookByText(text: string): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.apiUrl}/findByString`, { params: { param: text } }).pipe(
+    return this.http.get<Book[]>(this.apiUrl + '/' + 'findByString', { params: { param: text } }).pipe(
       map((books: any[]) => 
         books.map(book => ({
-          bookId: book.id, 
+          bookId: book.bookId, 
           title: book.title,
           isbn: book.isbn,
           authors: book.authors, 
@@ -52,7 +52,7 @@ export class BooksService {
   }
 
   createBook(book: Book): Observable<Book> {
-    return this.http.post<Book>(`${this.apiUrl}`, book).pipe( 
+    return this.http.post<Book>(this.apiUrl, book).pipe( 
       map(createdBook => ({
         bookId: createdBook.bookId,
         title: createdBook.title,
