@@ -18,6 +18,7 @@ export class BookFormComponent {
   @Input() bookData: Book | null = null;
   bookForm: FormGroup;
   mode: 'create' | 'update' | 'search' = 'create';
+  bookId: string | null = null;
 
   constructor(
     private booksService: BooksService,
@@ -65,10 +66,20 @@ export class BookFormComponent {
     // Imposta la modalità in base al parametro della rotta
     this.route.paramMap.subscribe(params => {
       this.mode = params.get('mode') as 'create' | 'update' | 'search' || 'create';
+      this.bookId = params.get('bookId');  // Recupera l'ID del libro
       
-      // Se la modalità è 'update' e sono presenti dati del libro, popola i campi
-      if (this.mode === 'update' && this.bookData) {
-        this.bookForm.patchValue(this.bookData);
+      // Se la modalità è 'update' e l'ID del libro è presente, carica il libro
+      if (this.mode === 'update' && this.bookId) {
+        const bookIdNumber = Number(this.bookId);  // Converte la stringa in numero
+  
+        if (!isNaN(bookIdNumber)) {  // Verifica che la conversione abbia avuto successo
+          this.booksService.getBookById(bookIdNumber).subscribe(book => {
+            this.bookData = book;
+            this.bookForm.patchValue(book);
+          });
+        } else {
+          console.error('Invalid book ID:', this.bookId);
+        }
       }
     });
   }
@@ -94,10 +105,24 @@ export class BookFormComponent {
   }
 
   private updateBook(book: Book): void {
-    this.booksService.updateBook(book).subscribe(response => {
-      console.log("Book updated:", response);
-    });
+    // Verifica che l'ID del libro sia disponibile
+    if (this.bookId) {
+      const bookIdNumber = Number(this.bookId);  // Trasforma bookId in numero
+      if (!isNaN(bookIdNumber)) {
+        console.log('Book ID:', bookIdNumber);  // Utilizza bookIdNumber
+        const updatedBook = { ...book, bookId: bookIdNumber };  // Imposta l'ID del libro da bookIdNumber
+        this.booksService.updateBook(updatedBook).subscribe(response => {
+          console.log("Book updated:", response);
+        });
+      } else {
+        console.error('Invalid Book ID:', this.bookId);
+      }
+    } else {
+      console.error('Book ID is missing for update');
+    }
   }
+  
+  
 
   private searchBook(criteria: Book): void {
     const headers = new HttpHeaders({

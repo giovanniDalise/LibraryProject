@@ -15,7 +15,10 @@ export class BooksService {
     return this.http.get<Book[]>(this.apiUrl).pipe(
       map((books: any[]) => 
         books.map(book => ({
-          bookId: book.bookId, // Assumi che 'id' corrisponda a 'bookId' nel tuo modello
+          bookId: book.bookId, // ho rifattorizzato i progetti perchè ti arrivava id dal json e il tuo modello utilizza invece bookId
+          //quello che ha in questa parte del map ti ricordo che a sinistra è il tuo modello invece a destra è come ti arriva dall'api se nei metidi
+          //sotto del servizio vedi che per l'api stai utilizzando stranamente bookId è probabile sia dovuto a qualche chiamata del metodo che 
+          //cambia il nome
           title: book.title,
           isbn: book.isbn,
           authors: book.authors, // Mantieni solo il campo authors
@@ -79,7 +82,7 @@ updateBook(book: Book): Observable<Book> {
     return this.http.post<Book[]>(`${this.apiUrl}/findByBook`, criteria, options).pipe(
       map((books: any[]) =>
         books.map(book => ({
-          bookId: book.id,
+          bookId: book.bookId,
           title: book.title,
           isbn: book.isbn,
           authors: book.authors,
@@ -87,6 +90,10 @@ updateBook(book: Book): Observable<Book> {
         }))
       )
     );
+  }
+
+  deleteBook(bookId: number): Observable<any> {
+    return this.http.delete(`${this.apiUrl}/${bookId}`);
   }
   
 }

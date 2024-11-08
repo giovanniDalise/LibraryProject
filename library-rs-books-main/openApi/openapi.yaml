@@ -115,7 +115,7 @@ components:
     Book:
       type: object
       properties:
-        id:
+        bookId:
           type: integer
           format: int64
         editor:
@@ -129,12 +129,12 @@ components:
           type: string
         isbn:
           type: string
-        authorsArray:
+        authorsSet:
+          uniqueItems: true
           type: array
           items:
             $ref: '#/components/schemas/Author'
-        authorsSet:
-          uniqueItems: true
+        authorsArray:
           type: array
           items:
             $ref: '#/components/schemas/Author'

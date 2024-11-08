@@ -36,7 +36,7 @@ public class DaoBooks implements IDao<Book,Long>{
             em.getTransaction().begin();
             em.persist(book);
             em.getTransaction().commit();
-            return book.getId();
+            return book.getBookId();
         } catch (Exception e) {
             em.getTransaction().rollback();
             e.printStackTrace();
@@ -114,7 +114,7 @@ public class DaoBooks implements IDao<Book,Long>{
 
             em.merge(existingBook); // Fai il merge dell'entità esistente
             em.getTransaction().commit();
-            return existingBook.getId();
+            return existingBook.getBookId();
         } catch (Exception e) {
             if (em.getTransaction().isActive()) {
                 em.getTransaction().rollback();
@@ -124,9 +124,6 @@ public class DaoBooks implements IDao<Book,Long>{
             em.close();
         }
     }
-
-
-
 
 
     @Override
@@ -154,7 +151,7 @@ public class DaoBooks implements IDao<Book,Long>{
                     "OR e.name LIKE :searchText " +
                     "OR a.name LIKE :searchText " +
                     "OR a.surname LIKE :searchText " +
-                    "GROUP BY b.id";
+                    "GROUP BY b.bookId";
 
             return em.createQuery(query, Book.class)
                     .setParameter("searchText", "%" + searchText + "%")

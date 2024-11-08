@@ -63,4 +63,21 @@ export class BooksViewComponent {
     });
   }
   
+    // Metodo per eliminare il libro
+    deleteBook(bookId: number): void {
+      const bookIdNumber = Number(bookId);
+      if (!isNaN(bookIdNumber)) {
+        this.booksService.deleteBook(bookIdNumber).subscribe(response => {
+          console.log("Book deleted:", response);
+          // Dopo aver eliminato il libro, aggiorna la lista dei libri o naviga da qualche parte
+          this.booksService.getBooks().subscribe(books => {
+            this.books = books; // Ricarica i libri
+          });
+        }, error => {
+          console.error('Error deleting book:', error);
+        });
+      } else {
+        console.error('Invalid Book ID:', bookId);
+      }
+    }
 }

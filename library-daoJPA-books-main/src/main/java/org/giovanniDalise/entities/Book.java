@@ -14,7 +14,7 @@ public class Book implements Serializable{
     @Id
     @GeneratedValue(strategy=GenerationType.IDENTITY)
     @Column(name = "book_id")
-    private Long id;
+    private Long bookId;
 
     @ManyToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinColumn(name = "editor")
@@ -59,12 +59,12 @@ public class Book implements Serializable{
         return authors.toArray(new Author[authors.size()]);
     }
 
-    public Long getId() {
-        return id;
+    public Long getBookId() {
+        return bookId;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public void setBookId(Long bookId) {
+        this.bookId = bookId;
     }
 
     public Set<Author> getAuthorsSet() {
@@ -100,12 +100,12 @@ public class Book implements Serializable{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Book book = (Book) o;
-        return Objects.equals(id, book.id);
+        return Objects.equals(bookId, book.bookId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hashCode(bookId);
     }
 
     public String toString(){

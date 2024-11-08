@@ -57,3 +57,9 @@ li {
 li:hover {
     color: #007BFF; /* Colore al passaggio del mouse */
 }
+
+button {
+    position: relative;
+    z-index: 2;
+  }
+  
