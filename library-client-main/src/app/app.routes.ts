@@ -8,6 +8,6 @@ export const routes: Routes = [
     {path:'', component:HomeComponent},
     {path:'books-view', component:BooksViewComponent},
     {path: 'books-view/:bookId', component: BooksViewComponent },
-    { path: 'book-form/:mode', component: BookFormComponent }, // Rotta con parametro mode
+    {path: 'book-form/:mode', component: BookFormComponent }, // Rotta con parametro mode
 
 ];

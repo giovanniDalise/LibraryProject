@@ -23,7 +23,7 @@ export class BooksViewComponent {
 
   ngOnInit(): void {
     // Recupera il parametro bookId dalla URL (per ottenere un libro specifico)
-    this.bookId = +this.activatedRoute.snapshot.paramMap.get('bookId')!;  // Converte in numero
+    this.bookId = +this.activatedRoute.snapshot.paramMap.get('bookId')!;  // il + lo converte in numero
   
     // Controlla se è presente un parametro di query 'search' per la ricerca testuale
     this.activatedRoute.queryParamMap.subscribe(queryParams => {
